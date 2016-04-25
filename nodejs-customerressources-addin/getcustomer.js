@@ -2,7 +2,7 @@ var express = require('express');
 var https = require('https');
 var app = express();
 
-// localhost:8081/alexw@northwindtraders.com
+// localhost:443/alexw@northwindtraders.com
 
 app.get('/:email', function (req, res) {
 	var jsonObject = JSON.stringify({"mail": req.params.email});
@@ -51,7 +51,7 @@ app.get('/:email', function (req, res) {
 	
 })
 
-var server = app.listen(8081, function () {
+var server = app.listen(80, function () {
 
   var host = server.address().address
   var port = server.address().port
