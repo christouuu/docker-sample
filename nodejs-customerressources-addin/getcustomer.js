@@ -41,7 +41,7 @@ app.get('/:email', function (req, res) {
 			var chunkJson = JSON.parse(chunk);
 			if(chunkJson.length > 0) {
 				var userData = chunkJson[0];
-				res.jsonp(JSON.stringify({
+				res.jsonp({
 					statusCode : 1,
 					firstName : userData.firstname, 
 					lastName : userData.lastname,
@@ -50,7 +50,7 @@ app.get('/:email', function (req, res) {
 					fb : userData.int_facebook,
 					twitter : userData.int_twitter, 
 					phone : userData.telephone1					
-				}));
+				});
 			}
 			else {
 				res.jsonp(JSON.stringify({
