@@ -15,6 +15,11 @@ server.listen(443, function() {
 	console.log("GetDynamicsCustomerData app listening at http://%s:%s", host, port);
 });
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.get('/:email', function (req, res) {
 	var jsonObject = JSON.stringify({"mail": req.params.email});
@@ -53,9 +58,9 @@ app.get('/:email', function (req, res) {
 				});
 			}
 			else {
-				res.jsonp(JSON.stringify({
+				res.jsonp({
 					statusCode : 0
-				}));
+				});
 			}
 		});
 	})
