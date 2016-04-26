@@ -2,10 +2,11 @@
 	"name" : "GetDynamicsCustomerData",
 	"version" : "1.0.0",
 	"private": true, 
-    "scripts": { 
-      "start": "node getcustomer.js" 
-    }, 
+	"scripts": { 
+	  "start": "node getcustomer.js" 
+	}, 
 	"dependencies" : {
-		"express" : "4.13.4"
+		"express" : "4.13.4",
+		"fs" : "0.0.2"
 	}
 }

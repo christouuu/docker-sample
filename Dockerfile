@@ -5,7 +5,7 @@ RUN apt-get update && apt-get upgrade -y && \
     mkdir /src && cd /src && \
     git clone https://github.com/christouuu/docker-sample.git && \
     cd docker-sample/nodejs-customerressources-addin && \
-    npm install
+    npm install && npm cache clean 
 WORKDIR /src/docker-sample/nodejs-customerressources-addin
 EXPOSE 80
 ENTRYPOINT npm start

@@ -1,11 +1,25 @@
+var fs = require('fs');
 var express = require('express');
 var https = require('https');
 var app = express();
 
 // localhost:443/alexw@northwindtraders.com
 
+var server = https.createServer({
+	key: fs.readFileSync('myPrivateKey.key'),
+	cert: fs.readFileSync('myCert.pem')
+}, app);
+server.listen(443, function() {
+	var host = server.address().address;
+	var port = server.address().port;
+	console.log("GetDynamicsCustomerData app listening at http://%s:%s", host, port);
+});
+
+
 app.get('/:email', function (req, res) {
 	var jsonObject = JSON.stringify({"mail": req.params.email});
+	console.log(req.params.email + " @ " + (new Date()).toString());
+	
    	var options = {
 		host: "prod-05.westeurope.logic.azure.com",
 		port: 443,
@@ -49,12 +63,4 @@ app.get('/:email', function (req, res) {
 	reqPost.write(jsonObject);
 	reqPost.end();
 	
-})
-
-var server = app.listen(80, function () {
-
-  var host = server.address().address
-  var port = server.address().port
-  console.log("GetDynamicsCustomerData app listening at http://%s:%s", host, port)
-
 })
