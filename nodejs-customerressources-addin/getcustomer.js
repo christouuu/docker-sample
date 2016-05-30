@@ -26,9 +26,9 @@ app.get('/:email', function (req, res) {
 	console.log(req.params.email + " @ " + (new Date()).toString());
 	
    	var options = {
-		host: "prod-05.westeurope.logic.azure.com",
+		host: "prod-00.westeurope.logic.azure.com",
 		port: 443,
-		path: '/workflows/fa2eca08831344a8a52a22477f082446/triggers/manual/run?api-version=2015-08-01-preview&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=pyWl7lrX03OJv6Az01wedEJSMJKGJpKw72nUhSZP5O0',
+		path: '/workflows/202c50eb466946eca6dda90b0d33a47b/triggers/manual/run?api-version=2015-08-01-preview&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=vpnW_Co_809vZezTJxRNXd1pwWTX8ZpVYEVPw4_kJSs',
 		method: 'POST',
 		headers : {
 			'Content-Type' : 'application/json',
