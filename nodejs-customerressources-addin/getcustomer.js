@@ -9,7 +9,7 @@ var server = https.createServer({
 	key: fs.readFileSync('myPrivateKey.key'),
 	cert: fs.readFileSync('myCert.pem')
 }, app);
-server.listen(443, function() {
+server.listen(80, function() {
 	var host = server.address().address;
 	var port = server.address().port;
 	console.log("GetDynamicsCustomerData app listening at http://%s:%s", host, port);
