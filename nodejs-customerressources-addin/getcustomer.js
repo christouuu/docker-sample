@@ -5,11 +5,11 @@ var app = express();
 
 // localhost:443/alexw@northwindtraders.com
 
-var server = https.createServer({
-	key: fs.readFileSync('myPrivateKey.key'),
-	cert: fs.readFileSync('myCert.pem')
-}, app);
-server.listen(80, function() {
+// var server = https.createServer({
+	// key: fs.readFileSync('myPrivateKey.key'),
+	// cert: fs.readFileSync('myCert.pem')
+// }, app);
+app.listen(80, function() {
 	var host = server.address().address;
 	var port = server.address().port;
 	console.log("GetDynamicsCustomerData %s app listening at http://%s:%s", "1.0", host, port);
