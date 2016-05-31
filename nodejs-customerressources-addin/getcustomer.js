@@ -1,4 +1,4 @@
-var fs = require('fs');
+// var fs = require('fs');
 var express = require('express');
 var https = require('https');
 var app = express();
@@ -9,18 +9,18 @@ var app = express();
 	// key: fs.readFileSync('myPrivateKey.key'),
 	// cert: fs.readFileSync('myCert.pem')
 // }, app);
-app.listen(80, function() {
-	// var host = server.address().address;
-	// var port = server.address().port;
+var server = app.listen(80, function() {
+	var host = server.address().address;
+	var port = server.address().port;
 	// console.log("GetDynamicsCustomerData %s app listening at http://%s:%s", "1.0", host, port);
 	console.log("GetDynamicsCustomerData %s listening", "1.0");
 });
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// app.use(function(req, res, next) {
+  // res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  // next();
+// });
 
 app.get('/:email', function (req, res) {
 	var jsonObject = JSON.stringify({"mail": req.params.email});
