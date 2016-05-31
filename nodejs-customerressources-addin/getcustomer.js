@@ -45,7 +45,7 @@ app.get('/:email', function (req, res) {
 		resReq.on('data', function (chunk) {
 			var chunkJson = JSON.parse(chunk);
 			if(chunkJson.length > 0) {
-				var userData = chunkJson.salesforce[0];
+				var userData = chunkJson.salesforceContact;
 				res.jsonp({
 					statusCode : 1,
 					firstName : userData.FirstName, 
