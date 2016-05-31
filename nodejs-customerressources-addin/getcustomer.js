@@ -12,7 +12,7 @@ var server = https.createServer({
 server.listen(80, function() {
 	var host = server.address().address;
 	var port = server.address().port;
-	console.log("GetDynamicsCustomerData app listening at http://%s:%s", host, port);
+	console.log("GetDynamicsCustomerData %s app listening at http://%s:%s", "1.0" host, port);
 });
 
 app.use(function(req, res, next) {
