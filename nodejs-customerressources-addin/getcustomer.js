@@ -10,9 +10,10 @@ var app = express();
 	// cert: fs.readFileSync('myCert.pem')
 // }, app);
 app.listen(80, function() {
-	var host = server.address().address;
-	var port = server.address().port;
-	console.log("GetDynamicsCustomerData %s app listening at http://%s:%s", "1.0", host, port);
+	// var host = server.address().address;
+	// var port = server.address().port;
+	// console.log("GetDynamicsCustomerData %s app listening at http://%s:%s", "1.0", host, port);
+	console.log("GetDynamicsCustomerData %s listening", "1.0");
 });
 
 app.use(function(req, res, next) {
