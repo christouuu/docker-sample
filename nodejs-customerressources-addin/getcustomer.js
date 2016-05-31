@@ -42,12 +42,18 @@ app.get('/:email', function (req, res) {
 		// console.log('STATUS: ' + resReq.statusCode);
 		// console.log('HEADERS: ' + JSON.stringify(resReq.headers));
 		resReq.setEncoding('utf8');
+		var allResponseData = '';
 		resReq.on('data', function (chunk) {
-			console.log(chunk);
-			var chunkJson = JSON.parse(chunk);
-			if(chunkJson.length > 0) {
-				console.log(chunkJson);
+			allResponseData += chunk;
+		});
+		resReq.on('end', function() {
+
+			var chunkJson = JSON.parse(allResponseData);
+
+			if(chunkJson.salesforceContact) {
 				var userData = chunkJson.salesforceContact;
+				var companyData = chunkJson.salesforceAccount;
+				var userDocs = chunkJson.sharepoint;
 				res.jsonp({
 					statusCode : 1,
 					firstName : userData.FirstName, 
@@ -55,7 +61,10 @@ app.get('/:email', function (req, res) {
 					email : userData.Email,
 					jobTitle : userData.Title,
 					Address : userData.MailingStreet + ", " + userData.MailingPostalCode + " " + userData.MailingCity,
-					phone : userData.Phone
+					phone : userData.Phone, 
+					companyName : companyData.Name, 
+					companyWebsite : companyData.Website, 
+					relatedDocs : userDocs
 				});
 			}
 			else {
