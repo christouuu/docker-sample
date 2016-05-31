@@ -45,16 +45,15 @@ app.get('/:email', function (req, res) {
 		resReq.on('data', function (chunk) {
 			var chunkJson = JSON.parse(chunk);
 			if(chunkJson.length > 0) {
-				var userData = chunkJson[0];
+				var userData = chunkJson.salesforce[0];
 				res.jsonp({
 					statusCode : 1,
-					firstName : userData.firstname, 
-					lastName : userData.lastname,
-					email : userData.emailaddress1,
-					jobTitle : userData.jobtitle,
-					fb : userData.int_facebook,
-					twitter : userData.int_twitter, 
-					phone : userData.telephone1					
+					firstName : userData.FirstName, 
+					lastName : userData.LastName,
+					email : userData.Email,
+					jobTitle : userData.Title,
+					Address : userData.MailingStreet + ", " + userData.MailingPostalCode + " " + userData.MailingCity,
+					phone : userData.Phone
 				});
 			}
 			else {
