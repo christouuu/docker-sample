@@ -9,7 +9,7 @@ var server = https.createServer({
 	key: fs.readFileSync('myPrivateKey.key'),
 	cert: fs.readFileSync('myCert.pem')
 }, app);
-server.listen(80, function() {
+server.listen(443, function() {
 	var host = server.address().address;
 	var port = server.address().port;
 	console.log("GetDynamicsCustomerData %s app listening at http://%s:%s", "1.0", host, port);
@@ -43,6 +43,7 @@ app.get('/:email', function (req, res) {
 		// console.log('HEADERS: ' + JSON.stringify(resReq.headers));
 		resReq.setEncoding('utf8');
 		resReq.on('data', function (chunk) {
+			console.log(chunk);
 			var chunkJson = JSON.parse(chunk);
 			if(chunkJson.length > 0) {
 				console.log(chunkJson);
